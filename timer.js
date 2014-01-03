@@ -1,4 +1,4 @@
-var how_many_minutes = 5;
+var how_many_minutes = 20;
 var how_many_seconds = 0;
 how_many_seconds += how_many_minutes*60;
 
@@ -22,7 +22,7 @@ function startCountdown () {
 	remaining_seconds = dom_totalseconds.value;
 	document.title="▶ Activo"
 	dom_totaltime.style.display="none";
-	dom_countdown.style.display="block"
+	dom_countdown.style.display="inline-block"
 	dom_startcount.style.display="none";
 	dom_stopcount.style.display="block";
 	dom_countdown.innerHTML=dom_totalseconds.value;
@@ -31,9 +31,9 @@ function startCountdown () {
 
 function stopCountdown () {
 	document.title="… Detenido"
-	dom_totaltime.style.display="block";
+	dom_totaltime.style.display="inline-block";
 	dom_countdown.style.display="none"
-	dom_startcount.style.display="block";
+	dom_startcount.style.display="inline-block";
 	dom_stopcount.style.display="none";
 	clearTimeout(myTimeout);
 	dom_countdown.innerHTML=dom_totalseconds.value;

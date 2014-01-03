@@ -24,20 +24,21 @@
 			margin: auto;
 			margin-top: 100px;
 		}
+		#display div {
+			text-align: center;
+		}
 		#countdown {
 			font-size: 62px;
 			margin-top:5px;
 			display: none;
-			float: left;
 			width: 200px;
-			text-align: left;
+			text-align: center;
 		}
 		#startcount, #stopcount {
 			font-family: icomoon;
 			font-size: 62px;
 			text-decoration: none;
 			display: block;
-			float: left;
 			color: #bbb;
 			margin-top: 10px;
 		}
@@ -58,22 +59,29 @@
 		}
 		#totaltime {
 			display: block;
-			float: left;
-			margin-bottom: 50px;
 		}
 		#totaltime input {
 			font-size: 62px;
 			width: 200px;
+			border: 1px solid #aaa;
+			border-radius: 4px;
+		}
+		#totalseconds {
+			text-align: center;
 		}
 	</style>
 	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
 </head>
 <body>
 	<div id="display">
-		<span id="startcount" title="Iniciar"></span>
-		<span id="stopcount" title="Detener"></span>
-		<span id="countdown" title="Tiempo restante">0</span>
-		<span id="totaltime"><input id="totalseconds" type="number"></span>
+		<div>
+			<span id="countdown" title="Tiempo restante">0</span>
+			<span id="totaltime"><input id="totalseconds" type="number"></span>
+		</div>
+		<div>
+			<span id="startcount" title="Iniciar"></span>
+			<span id="stopcount" title="Detener"></span>
+		</div>
 	</div>
 	<audio id="mysound" preload="auto">
 		<source src="bell2.mp3" type="audio/mpeg"></source>
