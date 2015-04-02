@@ -18,19 +18,19 @@ module.exports = function(grunt){
 				},
 				files: [{
 					expand: false,
-					src: 'estilos.scss',
-					dest: 'estilos.css'
+					src: 'timer.scss',
+					dest: 'timer.css'
 				}]
 			}
 		},
 		autoprefixer: {
 			dest: {
-				src: 'estilos.css'
+				src: 'timer.css'
 			}
 		},
 		watch: {
 			general: {
-				files: ['index.html', 'estilos.scss', 'timer.js'],
+				files: ['index.html', 'timer.scss', 'timer.js'],
 				tasks: ['default']
 			},
 			options: {
