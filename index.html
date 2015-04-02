@@ -3,80 +3,16 @@
 	<meta charset="utf-8" />
 	<title>… Detenido</title>
 	<link rel="shortcut icon" href="favicon.ico" />
-	<style>
-		@font-face {
-			font-family: 'icomoon';
-			src:url('fonts/icomoon.eot');
-			src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-				url('fonts/icomoon.ttf') format('truetype'),
-				url('fonts/icomoon.woff') format('woff'),
-				url('fonts/icomoon.svg#icomoon') format('svg');
-			font-weight: normal;
-			font-style: normal;
-		}
-		html, input {
-			font-family: Helvetica, Arial;
-			font-size: 18px;
-		}
-		#display {
-			text-align: center;
-			width: 300px;
-			margin: auto;
-			margin-top: 100px;
-		}
-		#display div {
-			text-align: center;
-		}
-		#countdown {
-			font-size: 62px;
-			margin-top:5px;
-			display: none;
-			width: 200px;
-			text-align: center;
-		}
-		#startcount, #stopcount {
-			font-family: icomoon;
-			font-size: 62px;
-			text-decoration: none;
-			display: block;
-			color: #bbb;
-			margin-top: 10px;
-		}
-		#startcount:hover, #stopcount:hover, #testsound:hover {
-			color:#000;
-			cursor:pointer;
-		}
-		#stopcount {
-			display: none;
-		}
-		#testsound {
-			font-family: icomoon;
-			font-size: 34px;
-			color: #aaa;
-			position: absolute;
-			right: 10px;
-			bottom: 10px;
-		}
-		#totaltime {
-			display: block;
-		}
-		#totaltime input {
-			font-size: 62px;
-			width: 200px;
-			border: 1px solid #aaa;
-			border-radius: 4px;
-		}
-		#totalseconds {
-			text-align: center;
-		}
-	</style>
+	<link rel="stylesheet" href="estilos.css" type="text/css" media="screen">
 	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
 </head>
 <body>
 	<div id="display">
 		<div>
 			<span id="countdown" title="Tiempo restante">0</span>
-			<span id="totaltime"><input id="totalseconds" type="number"></span>
+			<span id="totaltime">
+				<input id="totalseconds" type="number">
+			</span>
 		</div>
 		<div>
 			<span id="startcount" title="Iniciar"></span>

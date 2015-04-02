@@ -20,9 +20,9 @@ dom_totalseconds.value=how_many_seconds;
 
 function startCountdown () {
 	remaining_seconds = dom_totalseconds.value;
-	document.title="▶ Activo"
+	document.title="▶ Activo";
 	dom_totaltime.style.display="none";
-	dom_countdown.style.display="inline-block"
+	dom_countdown.style.display="inline-block";
 	dom_startcount.style.display="none";
 	dom_stopcount.style.display="block";
 	dom_countdown.innerHTML=dom_totalseconds.value;
@@ -30,9 +30,9 @@ function startCountdown () {
 }
 
 function stopCountdown () {
-	document.title="… Detenido"
+	document.title="… Detenido";
 	dom_totaltime.style.display="inline-block";
-	dom_countdown.style.display="none"
+	dom_countdown.style.display="none";
 	dom_startcount.style.display="inline-block";
 	dom_stopcount.style.display="none";
 	clearTimeout(myTimeout);
@@ -55,4 +55,4 @@ startcount.onclick = startCountdown;
 stopcount.onclick = stopCountdown;
 dom_testsound.onclick = function () { 
 	dom_mysound.play();
-}
+};

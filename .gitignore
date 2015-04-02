@@ -3,3 +3,7 @@
 ehthumbs.db
 Icon?
 Thumbs.db
+package.json
+node_modules/
+.sass-cache/
+estilos.css
