@@ -43,6 +43,7 @@ function myCountdown () {
 	myTimeout = setTimeout(function (){
 		if (--remaining_seconds>0) {
 			dom_countdown.innerHTML=remaining_seconds;
+			document.title="▶ " + remaining_seconds;
 			myCountdown();
 		} else {
 			dom_mysound.play();
