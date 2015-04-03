@@ -13,7 +13,13 @@ var btn_testsound = document.getElementById("testsound");
 var dom_totalminutes = document.getElementById("totalminutes");
 var dom_totalseconds = document.getElementById("totalseconds");
 var dom_totaltime = document.getElementById("totaltime");
+var dom_frases = document.getElementById("frases");
 
+var frases_array = [
+	'¿Estás aquí?',
+	'¿Estás respirando?',
+	'Momento presente, momento maravilloso'
+];
 
 countdown_s.innerHTML=how_many_seconds;
 dom_totalminutes.value=how_many_minutes;
@@ -28,6 +34,11 @@ function formato(valor) { // devuelve una cadena de dos dígitos
 	}
 }
 
+function eligefrase() {
+	var cual = Math.floor((Math.random() * frases_array.length));
+	return frases_array[cual];
+}
+
 
 function startCountdown () {
 	remaining_minutes = dom_totalminutes.value;
@@ -39,6 +50,7 @@ function startCountdown () {
 	btn_stopcount.style.display="block";
 	countdown_m.innerHTML=dom_totalminutes.value;
 	countdown_s.innerHTML=formato(dom_totalseconds.value);
+	dom_frases.innerHTML=eligefrase();
 	myCountdown();
 }
 
