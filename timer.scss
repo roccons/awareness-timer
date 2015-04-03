@@ -17,17 +17,35 @@ html, input {
 	width: 300px;
 	margin: auto;
 	margin-top: 100px;
-	div {
+	div, input {
 		text-align: center;
 	}
+	#totaltime { // entrada de tiempo
+		display: block;
+		font-size: 62px;
+		input {
+			font-size: inherit;
+			width: 100px;
+			border: 1px solid #aaa;
+			border-radius: 4px;
+			padding: 5px 5px 0 5px;
+			&#totalminutes {
+				text-align: right;
+			}
+			&#totalseconds {
+				text-align: left;
+			}
+		}
+	}
+	#countdown { // conteo
+		font-size: 62px;
+		margin-top:5px;
+		width: 200px;
+		text-align: center;
+		display: none;
+	}
 }
-#countdown {
-	font-size: 62px;
-	margin-top:5px;
-	display: none;
-	width: 200px;
-	text-align: center;
-}
+// botones
 #startcount, #stopcount {
 	font-family: icomoon;
 	font-size: 62px;
@@ -42,18 +60,6 @@ html, input {
 }
 #stopcount {
 	display: none;
-}
-#totaltime {
-	display: block;
-	input {
-		font-size: 62px;
-		width: 200px;
-		border: 1px solid #aaa;
-		border-radius: 4px;
-	}
-}
-#totalseconds {
-	text-align: center;
 }
 #testsound {
 	font-family: icomoon;
