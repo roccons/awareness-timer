@@ -18,12 +18,16 @@ var dom_totaltime = document.getElementById("totaltime");
 var dom_frases = document.getElementById("frases");
 
 var frases_array = [
-	'¿Estás aquí?',
-	'¿Estás respirando?',
-	'¿En dónde está tu pensamiento?',
-	'¿Te estás divirtiendo?',
-	'¿Estás disfrutando',
-	'¿Qué necesitas?',
+	'¿Estoy aquí?',
+	'¿Estoy en mi cuerpo?',
+	'¿Estoy respirando?',
+	'¿En dónde está mi pensamiento?',
+	'¿En dónde está mi atención?',
+	'¿Me estoy divirtiendo?',
+	'¿Estoy disfrutando?',
+	'¿Me hace falta algo?',
+	'Me detengo',
+	'Estoy presente',
 	'Momento presente, momento maravilloso',
 	'Soy polvo de estrellas',
 	'Siempre estoy en casa',
@@ -32,7 +36,7 @@ var frases_array = [
 	'Nada real puede ser amenzado',
 	'Estoy en paz',
 	'Abrazo mis miedos e inseguridades',
-	'Reconozco mis aciertos y mis errores',
+	'Reconozco mis aciertos y mis errores'
 ];
 
 countdown_s.innerHTML=how_many_seconds;
