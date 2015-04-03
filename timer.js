@@ -1,7 +1,9 @@
 var how_many_minutes = 20;
 var how_many_seconds = 0;
 
-var remaining_seconds, myTimeout;
+var remaining_seconds, remaining_minutes;
+var num_frase_anterior;
+var myTimeout;
 var isCounting = false;
 
 // obtengo los tags
@@ -18,7 +20,19 @@ var dom_frases = document.getElementById("frases");
 var frases_array = [
 	'¿Estás aquí?',
 	'¿Estás respirando?',
-	'Momento presente, momento maravilloso'
+	'¿En dónde está tu pensamiento?',
+	'¿Te estás divirtiendo?',
+	'¿Estás disfrutando',
+	'¿Qué necesitas?',
+	'Momento presente, momento maravilloso',
+	'Soy polvo de estrellas',
+	'Siempre estoy en casa',
+	'Siempre estoy comenzando',
+	'Estoy aprendiendo',
+	'Nada real puede ser amenzado',
+	'Estoy en paz',
+	'Abrazo mis miedos e inseguridades',
+	'Reconozco mis aciertos y mis errores',
 ];
 
 countdown_s.innerHTML=how_many_seconds;
@@ -35,7 +49,11 @@ function formato(valor) { // devuelve una cadena de dos dígitos
 }
 
 function eligefrase() {
-	var cual = Math.floor((Math.random() * frases_array.length));
+	var cual;
+	do {
+		cual = Math.floor((Math.random() * frases_array.length));
+	} while (cual === num_frase_anterior);
+	num_frase_anterior = cual;
 	return frases_array[cual];
 }
 
