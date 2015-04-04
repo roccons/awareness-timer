@@ -4,51 +4,32 @@ var how_many_seconds = 0;
 var remaining_seconds, remaining_minutes;
 var num_frase_anterior;
 var myTimeout;
-var isCounting = false;
+var frases_array;
 
-// obtengo los tags
-var countdown_s = document.getElementById("countdown_s");
+// elementos del dom
+var dom_countdown_m = document.getElementById("countdown_m");
+var dom_countdown_s = document.getElementById("countdown_s");
 var dom_mysound = document.getElementById("mysound");
-var btn_startcount = document.getElementById("startcount");
-var btn_stopcount = document.getElementById("stopcount");
-var btn_testsound = document.getElementById("testsound");
 var dom_totalminutes = document.getElementById("totalminutes");
 var dom_totalseconds = document.getElementById("totalseconds");
 var dom_totaltime = document.getElementById("totaltime");
 var dom_frases = document.getElementById("frases");
 
-var frases_array = [
-	'¿Estoy aquí?',
-	'¿Estoy respirando?',
-	'¿En dónde está mi atención?',
-	'¿Me estoy divirtiendo?',
-	'¿Estoy disfrutando?',
-	'¿En qué estoy empleando mi tiempo?',
-	'¿Estoy atendiendo lo importante?',
-	'Cuido de mis necesidades',
-	'Me detengo',
-	'Pongo atención, me pongo atención',
-	'Imprimo un propósito a cada acción',
-	'Estoy presente',
-	'Estoy presente en cada respiración',
-	'Habito mi cuerpo',
-	'Momento presente, momento maravilloso',
-	'Soy polvo de estrellas',
-	'Siempre estoy en casa',
-	'Siempre estoy comenzando',
-	'Estoy aprendiendo',
-	'Nada real puede ser amenzado',
-	'Estoy en paz',
-	'Abrazo mis miedos e inseguridades',
-	'Reconozco mis aciertos y mis errores',
-	'Aprendo de mis errores',
-	'Con cada respiración vuelvo a casa'
-];
+//botones
+var btn_startcount = document.getElementById("startcount");
+var btn_stopcount = document.getElementById("stopcount");
+var btn_testsound = document.getElementById("testsound");
 
-countdown_s.innerHTML=how_many_seconds;
+// construye arreglo de frases
+$(document).ready(function() {
+    $.get('frases.txt', function(data) {
+        frases_array = data.split('\n');
+        dom_frases.innerHTML=eligefrase();
+    });
+});
+
 dom_totalminutes.value=how_many_minutes;
 dom_totalseconds.value=how_many_seconds;
-dom_frases.innerHTML=eligefrase();
 
 function formato(valor) { // devuelve una cadena de dos dígitos
 	valor=""+valor;
@@ -77,8 +58,8 @@ function startCountdown () {
 	countdown.style.display="inline-block";
 	btn_startcount.style.display="none";
 	btn_stopcount.style.display="block";
-	countdown_m.innerHTML=dom_totalminutes.value;
-	countdown_s.innerHTML=formato(dom_totalseconds.value);
+	dom_countdown_m.innerHTML=dom_totalminutes.value;
+	dom_countdown_s.innerHTML=formato(dom_totalseconds.value);
 	dom_frases.innerHTML=eligefrase();
 	myCountdown();
 }
@@ -98,14 +79,14 @@ function myCountdown () {
 	myTimeout = setTimeout(function (){
 		if (remaining_seconds>0) {
 			remaining_seconds--;
-			countdown_s.innerHTML=formato(remaining_seconds);
+			dom_countdown_s.innerHTML=formato(remaining_seconds);
 			document.title="▶ " + remaining_minutes + ":" + formato(remaining_seconds);
 			myCountdown();
 		} else if(remaining_minutes>0) {
 			remaining_minutes--;
 			remaining_seconds=59;
-			countdown_m.innerHTML=remaining_minutes;
-			countdown_s.innerHTML=formato(remaining_seconds);
+			dom_countdown_m.innerHTML=remaining_minutes;
+			dom_countdown_s.innerHTML=formato(remaining_seconds);
 			document.title="▶ " + remaining_minutes + ":" + formato(remaining_seconds);
 			myCountdown();
 		} else {
@@ -118,6 +99,7 @@ function myCountdown () {
 
 startcount.onclick = startCountdown;
 stopcount.onclick = stopCountdown;
+
 btn_testsound.onclick = function () { 
 	if(dom_mysound.currentTime>0 && dom_mysound.currentTime<30) {
 		dom_mysound.pause();
