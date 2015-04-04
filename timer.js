@@ -1,6 +1,8 @@
+// valores pore defecto
 var how_many_minutes = 20;
 var how_many_seconds = 0;
 
+// variables
 var remaining_seconds, remaining_minutes;
 var num_frase_anterior;
 var myTimeout;
@@ -28,10 +30,12 @@ $(document).ready(function() {
     });
 });
 
+// valores iniciales
 dom_totalminutes.value=how_many_minutes;
 dom_totalseconds.value=how_many_seconds;
 
-function formato(valor) { // devuelve una cadena de dos dígitos
+// devuelve una cadena de dos dígitos
+function formato(valor) {
 	valor=""+valor;
 	if(valor.length<2) {
 		return "0" + valor;
@@ -40,6 +44,7 @@ function formato(valor) { // devuelve una cadena de dos dígitos
 	}
 }
 
+// elige una frase al azar
 function eligefrase() {
 	var cual;
 	do {
@@ -49,7 +54,7 @@ function eligefrase() {
 	return frases_array[cual];
 }
 
-
+// comienza un ciclo de conteo
 function startCountdown () {
 	remaining_minutes = dom_totalminutes.value;
 	remaining_seconds = dom_totalseconds.value;
@@ -64,6 +69,7 @@ function startCountdown () {
 	myCountdown();
 }
 
+// detiene conteo
 function stopCountdown () {
 	document.title="… Detenido";
 	dom_totaltime.style.display="inline-block";
@@ -75,6 +81,7 @@ function stopCountdown () {
 	dom_mysound.currentTime=0;
 }
 
+// cada segundo que pasa...
 function myCountdown () {
 	myTimeout = setTimeout(function (){
 		if (remaining_seconds>0) {
@@ -97,9 +104,11 @@ function myCountdown () {
 	}, 1000);
 }
 
+// asigna acciones a los botones
 startcount.onclick = startCountdown;
 stopcount.onclick = stopCountdown;
 
+// botón de probar sonido
 btn_testsound.onclick = function () { 
 	if(dom_mysound.currentTime>0 && dom_mysound.currentTime<30) {
 		dom_mysound.pause();
