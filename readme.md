@@ -1,0 +1,1 @@
+Página web que cada cierto tiempo toca una campana y lanza una frase o pregunta. El propósito principal es detenerse, respirar, y darse cuenta (de lo que haya que darse cuenta). También es útil para levantarse de la silla y moverse un poco.
