@@ -126,6 +126,16 @@ function myCountdown () {
 startcount.onclick = startCountdown;
 stopcount.onclick = stopCountdown;
 
+// crea listener para que tecla enter también inicie conteo
+dom_totaltime.onkeypress = function(e){
+    if (!e) e = window.event;
+    var keyCode = e.keyCode || e.which;
+    if (keyCode == '13'){
+      startCountdown();
+      return false;
+    }
+};
+
 // botón de probar sonido
 btn_testsound.onclick = function () { 
 	if(dom_mysound.currentTime>0 && dom_mysound.currentTime<30) {
