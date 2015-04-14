@@ -63,10 +63,10 @@ html, body {
 	display: block;
 	color: #bbb;
 	margin-top: 10px;
-}
-#startcount:hover, #stopcount:hover, #testsound:hover {
-	color:#000;
 	cursor:pointer;
+}
+#startcount:hover, #stopcount:hover {
+	color:#000;
 }
 #stopcount {
 	display: none;
@@ -78,4 +78,10 @@ html, body {
 	position: absolute;
 	right: 10px;
 	bottom: 10px;
+	cursor:pointer;
+}
+#github {
+	position: absolute;
+	right: 50px;
+	bottom: 12px;
 }
