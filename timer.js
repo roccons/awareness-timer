@@ -30,9 +30,27 @@ $(document).ready(function() {
     });
 });
 
-// valores iniciales
+// actualiza valores iniciales por los definidos por el usuario
+if(typeof(Storage) !== "undefined") {
+	if(localStorage.getItem("how_many_minutes") !== null) {
+		how_many_minutes = localStorage.getItem("how_many_minutes");
+		how_many_seconds = localStorage.getItem("how_many_seconds");
+	}
+}
+
+// muestra valores iniciales
 dom_totalminutes.value=how_many_minutes;
 dom_totalseconds.value=how_many_seconds;
+
+// guarda valores definidos por el usuario
+function save_preferred_time() {
+	if(typeof(Storage) !== "undefined") {
+		localStorage.setItem("how_many_minutes", dom_totalminutes.value);
+		localStorage.setItem("how_many_seconds", dom_totalseconds.value);
+	}
+}
+dom_totalminutes.onblur = save_preferred_time;
+dom_totalseconds.onblur = save_preferred_time;
 
 // devuelve una cadena de dos dígitos
 function formato(valor) {
