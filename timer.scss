@@ -16,6 +16,14 @@ html, input {
 html, body {
 	height: 100%;
 }
+#progreso {
+	background-color: #ddd;
+	& div {
+		background-color: #aaa;
+		height: 5px;
+		width: 0%;
+	}
+}
 #display {
 	text-align: center;
 	min-width: 350px;

@@ -97,6 +97,15 @@ function stopCountdown () {
 	clearTimeout(myTimeout);
 	dom_mysound.pause();
 	dom_mysound.currentTime=0;
+	$('#progreso > div').css('width', '0%');
+}
+
+// obtiene porcentaje de progreso
+function getProgreso () {
+	var remaining_total = (parseInt(remaining_minutes) * 60 + parseInt(remaining_seconds));
+	var total_total = (parseInt(how_many_minutes) * 60 + parseInt(how_many_seconds));
+	console.log((total_total - remaining_total)*100/total_total);
+	return (total_total - remaining_total)*100/total_total;
 }
 
 // cada segundo que pasa...
@@ -119,6 +128,8 @@ function myCountdown () {
 			dom_mysound.play();
 			startCountdown();
 		}
+		// actualiza barra de progreso
+		$('#progreso > div').css('width', getProgreso() + '%');
 	}, 1000);
 }
 
