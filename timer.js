@@ -75,14 +75,14 @@ function eligefrase() {
 // comienza un ciclo de conteo
 function startCountdown () {
 	remaining_minutes = dom_totalminutes.value;
-	remaining_seconds = dom_totalseconds.value;
+	remaining_seconds = Math.floor(dom_totalseconds.value/10)*10;
 	document.title="▶ Activo";
 	dom_totaltime.style.display="none";
 	countdown.style.display="inline-block";
 	btn_startcount.style.display="none";
 	btn_stopcount.style.display="block";
 	dom_countdown_m.innerHTML=dom_totalminutes.value;
-	dom_countdown_s.innerHTML=formato(dom_totalseconds.value);
+	dom_countdown_s.innerHTML=formato(remaining_seconds);
 	dom_frases.innerHTML=eligefrase();
 	myCountdown();
 }
@@ -111,14 +111,14 @@ function getProgreso () {
 // cada segundo que pasa...
 function myCountdown () {
 	myTimeout = setTimeout(function (){
-		if (remaining_seconds>0) {
-			remaining_seconds--;
+		if (remaining_seconds>=10) {
+			remaining_seconds-=10;
 			dom_countdown_s.innerHTML=formato(remaining_seconds);
 			document.title="▶ " + remaining_minutes + ":" + formato(remaining_seconds);
 			myCountdown();
 		} else if(remaining_minutes>0) {
 			remaining_minutes--;
-			remaining_seconds=59;
+			remaining_seconds=50;
 			dom_countdown_m.innerHTML=remaining_minutes;
 			dom_countdown_s.innerHTML=formato(remaining_seconds);
 			document.title="▶ " + remaining_minutes + ":" + formato(remaining_seconds);
@@ -130,7 +130,7 @@ function myCountdown () {
 		}
 		// actualiza barra de progreso
 		$('#progreso > div').css('width', getProgreso() + '%');
-	}, 1000);
+	}, 10000);
 }
 
 // asigna acciones a los botones
