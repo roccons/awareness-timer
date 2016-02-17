@@ -1,6 +1,8 @@
-// valores pore defecto
+// default values
 var how_many_minutes = 20;
 var how_many_seconds = 0;
+var sentences_file = 'sentences.txt';
+var sentences_file = 'frases.txt';
 
 // variables
 var remaining_seconds, remaining_minutes;
@@ -8,7 +10,7 @@ var num_frase_anterior;
 var myTimeout;
 var frases_array;
 
-// elementos del dom
+// dom elements
 var dom_countdown_m = document.getElementById("countdown_m");
 var dom_countdown_s = document.getElementById("countdown_s");
 var dom_mysound = document.getElementById("mysound");
@@ -17,20 +19,20 @@ var dom_totalseconds = document.getElementById("totalseconds");
 var dom_totaltime = document.getElementById("totaltime");
 var dom_frases = document.getElementById("frases");
 
-//botones
+// buttons
 var btn_startcount = document.getElementById("startcount");
 var btn_stopcount = document.getElementById("stopcount");
 var btn_testsound = document.getElementById("testsound");
 
-// construye arreglo de frases
+// builds the sentences array
 $(document).ready(function() {
-    $.get('frases.txt', function(data) {
+    $.get(sentences_file, function(data) {
         frases_array = data.split('\n');
         dom_frases.innerHTML=eligefrase();
     });
 });
 
-// actualiza valores iniciales por los definidos por el usuario
+// updates initial values with those set by the user
 if(typeof(Storage) !== "undefined") {
 	if(localStorage.getItem("how_many_minutes") !== null) {
 		how_many_minutes = localStorage.getItem("how_many_minutes");
@@ -38,11 +40,11 @@ if(typeof(Storage) !== "undefined") {
 	}
 }
 
-// muestra valores iniciales
+// shows initial values
 dom_totalminutes.value=how_many_minutes;
 dom_totalseconds.value=how_many_seconds;
 
-// guarda valores definidos por el usuario
+// keeps user defined values
 function save_preferred_time() {
 	if(typeof(Storage) !== "undefined") {
 		localStorage.setItem("how_many_minutes", dom_totalminutes.value);
@@ -52,7 +54,7 @@ function save_preferred_time() {
 dom_totalminutes.onblur = save_preferred_time;
 dom_totalseconds.onblur = save_preferred_time;
 
-// devuelve una cadena de dos dígitos
+// returns a two digits string
 function formato(valor) {
 	valor=""+valor;
 	if(valor.length<2) {
@@ -62,7 +64,7 @@ function formato(valor) {
 	}
 }
 
-// elige una frase al azar
+// chose a random sentece
 function eligefrase() {
 	var cual;
 	do {
@@ -72,7 +74,7 @@ function eligefrase() {
 	return frases_array[cual];
 }
 
-// comienza un ciclo de conteo
+// starts a counting cicle
 function startCountdown () {
 	remaining_minutes = dom_totalminutes.value;
 	remaining_seconds = Math.floor(dom_totalseconds.value/10)*10;
@@ -87,7 +89,7 @@ function startCountdown () {
 	myCountdown();
 }
 
-// detiene conteo
+// stops counting
 function stopCountdown () {
 	document.title="… Detenido";
 	dom_totaltime.style.display="inline-block";
@@ -100,7 +102,7 @@ function stopCountdown () {
 	$('#progreso > div').css('width', '0%');
 }
 
-// obtiene porcentaje de progreso
+// get progress percentage
 function getProgreso () {
 	var remaining_total = (parseInt(remaining_minutes) * 60 + parseInt(remaining_seconds));
 	var total_total = (parseInt(how_many_minutes) * 60 + parseInt(how_many_seconds));
@@ -108,7 +110,7 @@ function getProgreso () {
 	return (total_total - remaining_total)*100/total_total;
 }
 
-// cada segundo que pasa...
+// each interval completed...
 function myCountdown () {
 	myTimeout = setTimeout(function (){
 		if (remaining_seconds>=10) {
@@ -128,16 +130,16 @@ function myCountdown () {
 			dom_mysound.play();
 			startCountdown();
 		}
-		// actualiza barra de progreso
+		// updates progress bar
 		$('#progreso > div').css('width', getProgreso() + '%');
 	}, 10000);
 }
 
-// asigna acciones a los botones
+// asigns actions to buttons
 startcount.onclick = startCountdown;
 stopcount.onclick = stopCountdown;
 
-// crea listener para que tecla enter también inicie conteo
+// makes a listener so that the enter key also starts counting
 dom_totaltime.onkeypress = function(e){
     if (!e) e = window.event;
     var keyCode = e.keyCode || e.which;
@@ -147,7 +149,7 @@ dom_totaltime.onkeypress = function(e){
     }
 };
 
-// botón de probar sonido
+// test sound button
 btn_testsound.onclick = function () { 
 	if(dom_mysound.currentTime>0 && dom_mysound.currentTime<30) {
 		dom_mysound.pause();
