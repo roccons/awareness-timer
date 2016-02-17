@@ -2,7 +2,7 @@
 var how_many_minutes = 20;
 var how_many_seconds = 0;
 var sentences_file = 'sentences.txt';
-var sentences_file = 'frases.txt';
+//var sentences_file = 'frases.txt';
 
 // variables
 var remaining_seconds, remaining_minutes;
